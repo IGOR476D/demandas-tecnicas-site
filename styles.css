@@ -119,3 +119,15 @@ footer p {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* Styles for example image */
+.example-image-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.example-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
