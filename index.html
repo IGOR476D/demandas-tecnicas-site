@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demandas Técnicas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Demandas de Correções e Melhorias</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <ul class="task-list">
+        <li>
+          <strong>Corrigir marcador de duração “00:00”</strong> — exibir a duração real na thumbnail; se indisponível, ocultar.
+        </li>
+        <li>
+          <strong>Busca (lupa)</strong> — ao clicar no resultado, levar direto para a página do vídeo correspondente.
+        </li>
+        <li>
+          <strong>Vídeos relacionados</strong> — na visualização única, exibir apenas da mesma categoria do vídeo em reprodução.
+        </li>
+        <li>
+          <strong>Remover espaço abaixo do anúncio banner 300x250</strong> — eliminar o espaço vazio/preto que só ocorre no mobile na página de visualização única.
+        </li>
+        <li>
+          <strong>Botões de interação abaixo do vídeo</strong> — logo abaixo do anúncio já implementado, corrigir conforme o exemplo (views, like, salvar nos favoritos, compartilhar no WhatsApp), com redirecionamento do botão do WhatsApp funcionando. Limitar funcionamento para área do ícone de cada um.
+        </li>
+        <li>
+          <strong>Rolagem automática nos vídeos relacionados</strong> — ao clicar em um relacionado, a página deve rolar até o player em todos os navegadores (hoje falha no Chrome/Edge, etc) funciona no Mozilla.
+        </li>
+        <li>
+          <strong>Apontar domínio</strong> — Cloudflare → Vercel para o site.
+        </li>
+        <li>
+          <strong>BlazingCDN</strong> — thumbnails têm que ser entregues via Anycast CDN | vídeos precisam ser entregues via Video CDN; remover vídeos da AnycastCDN.
+        </li>
+        <li>
+          Ativar proteções contra downloads ou outras seguranças.
+        </li>
+        <li>
+          Resolver os periféricos (no render, Vercel, etc) que envolvam as mudanças acima.
+        </li>
+        <li>
+          <strong>Anúncios</strong> —
+          <ol>
+            <li>Remover o banner do topo da página de visualização única, 320x50 (mantendo o que está logo abaixo do vídeo).</li>
+            <li>Adicionar anúncio Popunder apenas no desktop (cole o trecho de código logo antes da tag de fechamento <code>&lt;/head&gt;</code>). Segundo minhas pesquisas precisa ser tratada semelhante aos banners da página de visualização única, segue cód. abaixo:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-button" aria-label="Copiar código">Copiar</button>
+            <pre><code>&lt;script type='text/javascript' src='//wretchonto.com/64/62/cd/6462cdb083d8db1be5d73c02dfc6933f.js'&gt;&lt;/script&gt;</code></pre>
+          </div>
+          <ol start="3">
+            <li>Adicionar novo código NativeBanner no rodapé do Desktop (exatamente onde foi removido anteriormente) agora esse vai se comportar horizontalmente, segue cód. abaixo:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-button" aria-label="Copiar código">Copiar</button>
+            <pre><code>&lt;script async="async" data-cfasync="false" src="//wretchonto.com/27fb94bfbb87feb9b890fe5431cdd456/invoke.js"&gt;&lt;/script&gt;
+
+&lt;div id="container-27fb94bfbb87feb9b890fe5431cdd456"&gt;&lt;/div&gt;</code></pre>
+          </div>
+        </li>
+        <li>
+          <strong>Login com Google (Firebase Auth)</strong> — adicionar login rápido com Google.
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Demandas Técnicas. Agradecimentos à empresa Borderless.</p>
+    </div>
+  </footer>
+</body>
+</html>
