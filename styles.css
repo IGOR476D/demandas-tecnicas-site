@@ -126,8 +126,27 @@ footer p {
   margin-top: 2rem;
 }
 
+/* Example image appears slightly smaller to fit neatly within the content */
 .example-image {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
   border-radius: 6px;
+}
+
+/* Utility class to remove bullets from list items used for custom content */
+.no-bullet {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Styling for highlighted subtitle that separates task sections */
+.highlight-subtitle {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.5rem;
+  margin: 1.5rem 0 0.5rem;
 }
