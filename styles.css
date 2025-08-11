@@ -142,11 +142,13 @@ footer p {
 
 /* Styling for highlighted subtitle that separates task sections */
 .highlight-subtitle {
-  display: block;
+  display: inline-block;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
-  border-left: 4px solid var(--accent-color);
-  padding-left: 0.5rem;
+  /* Apply a light highlight behind the subtitle text to mimic a highlighter */
+  background-color: rgba(100, 255, 218, 0.25);
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
   margin: 1.5rem 0 0.5rem;
 }
