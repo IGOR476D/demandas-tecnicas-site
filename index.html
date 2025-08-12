@@ -52,16 +52,32 @@
         <li>
           <strong>Primeiro: Apontar domínio</strong> — Cloudflare → Vercel para o site.
         </li>
-        <li>
-          <strong>Segundo: BlazingCDN</strong> — thumbnails têm que ser entregues via Anycast CDN | vídeos precisam ser entregues via Video CDN; remover vídeos da AnycastCDN.
-        </li>
-        <li>
-          Ativar proteções contra downloads ou outras seguranças.
-        </li>
-        <li>
-          Resolver os periféricos (no render, Vercel, etc) que envolvam as mudanças acima.
-        </li>
-        <li>
+    <li>
+      <strong>Segundo: BlazingCDN</strong> —
+      
+<p><strong>Assunto: Configuração do zero no BlazingCDN Video + domínio xcontos.tv + proteção contra download de vídeos</strong></p>
+<p>Olá, pessoal.</p>
+<p>Quero começar do zero a configuração para distribuir meus vídeos usando apenas o BlazingCDN Video para os vídeos e o Anycast CDN para as thumbnails. Não vamos aproveitar nada do que existe atualmente.</p>
+<p><strong>Sobre o conteúdo antigo:</strong></p>
+<p>Todo conteúdo atual pode ser considerado descartável.</p>
+<p>Tenho os arquivos originais e vou subir tudo novamente para o novo ambiente.</p>
+<p>Assim que a nova configuração estiver funcionando e validada, podem apagar todos os vídeos e thumbnails antigos.</p>
+<p><strong>O que preciso agora:</strong></p>
+<ol>
+<li><strong>Site (domínio principal)</strong><br/>Configurar o site para usar xcontos.tv como domínio principal (na Vercel).<br/>Criar redirecionamento 301 de xcontos.vercel.app para https://xcontos.tv.<br/>Garantir HTTPS e canonical corretos para SEO.</li>
+<li><strong>BlazingCDN Video e Anycast CDN (novos ambientes)</strong><br/>Criar um espaço novo no BlazingCDN Video para receber os vídeos.<br/>Criar um espaço novo no Anycast CDN para receber as thumbnails.<br/>Usar domínios customizados: video.xcontos.tv para vídeos e thumbs.xcontos.tv para thumbnails (configurar DNS e certificados HTTPS).<br/>Ativar HLS/DASH, CORS, Range Requests, Signed URLs (com expiração curta) e cache com boas práticas para vídeos.</li>
+<li><strong>Integração</strong><br/>Ajustar o backend (Render) para que todos os novos uploads de vídeo vão para video.xcontos.tv e as thumbnails para thumbs.xcontos.tv. ou o que precisar mais para essa tarefa.<br/>Validar o player no frontend (xcontos.tv) consumindo as novas URLs.<br/>Testar o fluxo completo: upload → armazenamento nos CDNs → playback e exibição no site.</li>
+<li><strong>Proteção contra download de vídeos (links podem ser compartilhados, mas não baixados diretamente)</strong><br/>URLs assinadas (token) com expiração curta para manifests/segmentos HLS.<br/>Bloqueio de acesso direto a arquivos MP4 ou outros formatos baixáveis.<br/>CORS restritivo para permitir apenas o domínio xcontos.tv no player.<br/>Proteção contra hotlink para evitar que players externos usem as URLs diretamente.<br/>HTTPS obrigatório e cabeçalhos adequados para evitar listagem de diretório.</li>
+</ol>
+<p><strong>Resumo:</strong></p>
+<p>xcontos.tv ativo como domínio principal do site, com redirecionamento 301 de xcontos.vercel.app.</p>
+<p>video.xcontos.tv ativo e servindo vídeos novos via HLS/DASH.</p>
+<p>thumbs.xcontos.tv ativo e servindo as novas thumbnails.</p>
+<p>Upload e playback funcionando no site com os novos domínios.</p>
+<p>Proteção implementada contra download direto dos vídeos.</p>
+<p>Obrigado.</p>
+</li>
+   
           <strong>Anúncios</strong> —
           <ol>
             <li>Remover o banner do topo da página de visualização única, 320x50 (mantendo o que está logo abaixo do vídeo).</li>
