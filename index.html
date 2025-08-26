@@ -17,18 +17,12 @@
   <main class="container">
     <section>
       <ul class="task-list">
-        <li>
-          <strong>Corrigir marcador de duração “00:00”</strong> — exibir a duração real na thumbnail.
-        </li>
+
         <li>
           <strong>Busca (lupa)</strong> — ao clicar no resultado, levar direto para a página do vídeo correspondente.
         </li>
-        <li>
-          <strong>Vídeos relacionados</strong> — na visualização única, exibir apenas da mesma categoria do vídeo em reprodução.
-        </li>
-        <li>
-          <strong>Remover espaço abaixo do anúncio banner 300x250</strong> — eliminar o espaço vazio/preto que só ocorre no mobile na página de visualização única.
-        </li>
+
+
         <li>
           <strong>Botões de interação abaixo do vídeo</strong> — logo abaixo do anúncio já implementado, corrigir conforme o exemplo (views, like, salvar nos favoritos, compartilhar no WhatsApp), com redirecionamento do botão do WhatsApp funcionando. Limitar funcionamento para área do ícone de cada um.
         </li>
@@ -44,61 +38,6 @@
         </li>
         <li>
           <strong>Rolagem automática nos vídeos relacionados</strong> — ao clicar em um relacionado, a página deve rolar até o player em todos os navegadores (hoje falha no Chrome/Edge, etc) funciona no Mozilla.
-        </li>
-        <!-- Highlighted subtitle to emphasize ordering of subsequent tasks -->
-        <li class="no-bullet">
-          <span class="highlight-subtitle">Abaixo precisa ser nessa ordem pois pouparia retrabalho</span>
-        </li>
-        <li>
-          <strong>Primeiro: Apontar domínio</strong> — Cloudflare → Vercel para o site.
-        </li>
-    <li>
-      <strong>Segundo: BlazingCDN</strong> —
-      
-<p><strong>Assunto: Configuração do zero no BlazingCDN Video + domínio xcontos.tv + proteção contra download de vídeos</strong></p>
-<p>Olá, pessoal.</p>
-<p>Quero começar do zero a configuração para distribuir meus vídeos usando apenas o BlazingCDN Video para os vídeos e o Anycast CDN para as thumbnails. Não vamos aproveitar nada do que existe atualmente.</p>
-<p><strong>Sobre o conteúdo antigo:</strong></p>
-<p>Todo conteúdo atual pode ser considerado descartável.</p>
-<p>Tenho os arquivos originais e vou subir tudo novamente para o novo ambiente.</p>
-<p>Assim que a nova configuração estiver funcionando e validada, podem apagar todos os vídeos e thumbnails antigos.</p>
-<p><strong>O que preciso agora:</strong></p>
-<ol>
-<li><strong>Site (domínio principal)</strong><br/>Configurar o site para usar xcontos.tv como domínio principal (na Vercel).<br/>Criar redirecionamento 301 de xcontos.vercel.app para https://xcontos.tv.<br/>Garantir HTTPS e canonical corretos para SEO.</li>
-<li><strong>BlazingCDN Video e Anycast CDN (novos ambientes)</strong><br/>Criar um espaço novo no BlazingCDN Video para receber os vídeos.<br/>Criar um espaço novo no Anycast CDN para receber as thumbnails.<br/>Usar domínios customizados: video.xcontos.tv para vídeos e thumbs.xcontos.tv para thumbnails (configurar DNS e certificados HTTPS).<br/>Ativar HLS/DASH, CORS, Range Requests, Signed URLs (com expiração curta) e cache com boas práticas para vídeos.</li>
-<li><strong>Integração</strong><br/>Ajustar o backend (Render) para que todos os novos uploads de vídeo vão para video.xcontos.tv e as thumbnails para thumbs.xcontos.tv. ou o que precisar mais para essa tarefa.<br/>Validar o player no frontend (xcontos.tv) consumindo as novas URLs.<br/>Testar o fluxo completo: upload → armazenamento nos CDNs → playback e exibição no site.</li>
-<li><strong>Proteção contra download de vídeos (links podem ser compartilhados, mas não baixados diretamente)</strong><br/>URLs assinadas (token) com expiração curta para manifests/segmentos HLS.<br/>Bloqueio de acesso direto a arquivos MP4 ou outros formatos baixáveis.<br/>CORS restritivo para permitir apenas o domínio xcontos.tv no player.<br/>Proteção contra hotlink para evitar que players externos usem as URLs diretamente.<br/>HTTPS obrigatório e cabeçalhos adequados para evitar listagem de diretório.</li>
-</ol>
-<p><strong>Resumo:</strong></p>
-<p>xcontos.tv ativo como domínio principal do site, com redirecionamento 301 de xcontos.vercel.app.</p>
-<p>video.xcontos.tv ativo e servindo vídeos novos via HLS/DASH.</p>
-<p>thumbs.xcontos.tv ativo e servindo as novas thumbnails.</p>
-<p>Upload e playback funcionando no site com os novos domínios.</p>
-<p>Proteção implementada contra download direto dos vídeos.</p>
-<p>Obrigado.</p>
-</li>
-   
-          <strong>Anúncios</strong> —
-          <ol>
-            <li>Remover o banner do topo da página de visualização única, 320x50 (mantendo o que está logo abaixo do vídeo).</li>
-            <li>Adicionar anúncio Popunder apenas no desktop (cole o trecho de código logo antes da tag de fechamento <code>&lt;/head&gt;</code>). Segundo minhas pesquisas precisa ser tratada semelhante aos banners da página de visualização única, segue cód. abaixo:</li>
-          </ol>
-          <div class="code-block">
-            <button class="copy-button" aria-label="Copiar código">Copiar</button>
-            <pre><code>&lt;script type='text/javascript' src='//wretchonto.com/64/62/cd/6462cdb083d8db1be5d73c02dfc6933f.js'&gt;&lt;/script&gt;</code></pre>
-          </div>
-          <ol start="3">
-            <li>Adicionar novo código NativeBanner no rodapé do Desktop (exatamente onde foi removido anteriormente) agora esse vai se comportar horizontalmente, segue cód. abaixo:</li>
-          </ol>
-          <div class="code-block">
-            <button class="copy-button" aria-label="Copiar código">Copiar</button>
-            <pre><code>&lt;script async="async" data-cfasync="false" src="//wretchonto.com/27fb94bfbb87feb9b890fe5431cdd456/invoke.js"&gt;&lt;/script&gt;
-
-&lt;div id="container-27fb94bfbb87feb9b890fe5431cdd456"&gt;&lt;/div&gt;</code></pre>
-          </div>
-        </li>
-        <li>
-          <strong>Login com Google (Firebase Auth)</strong> — adicionar login rápido com Google.
         </li>
       </ul>
     </section>
